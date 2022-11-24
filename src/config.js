@@ -10,7 +10,7 @@ const POPULAR_URL = `${TMDB_URL}movie/popular?api_key=${TMDB_KEY}&language=en-US
 
 // Watchmode Configuration
 
-const WM_KEY = process.env.REACT_APP_WM_KEY;
+// const WM_KEY = process.env.REACT_APP_WM_KEY;
 // const WM_URL = `https://api.watchmode.com/v1/title/${movieId}/sources/?apiKey=${WM_KEY}`
 
 export {
