@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { Wrapper, Content } from "./SearchBar.styles";
 
-const SearchBar = ({ setSearchTerm }) => {
+const SearchBar = ({ setSearchTerm, setMovieSelection }) => {
     const [state, setState] = useState("");
     const initial = useRef(true);
 
@@ -14,10 +14,11 @@ const SearchBar = ({ setSearchTerm }) => {
 
         const timer = setTimeout(() => {
             setSearchTerm(state);
+            setMovieSelection(null)
         }, 500);
 
         return () => clearTimeout(timer);
-    }, [setSearchTerm, state]);
+    }, [setSearchTerm, state, setMovieSelection]);
 
     return (
         <Wrapper>

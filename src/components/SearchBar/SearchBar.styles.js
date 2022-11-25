@@ -27,9 +27,14 @@ export const Content = styled.div`
         background: transparent;
         height: 40px;
         color: white;
+        
 
         :focus {
             outline: none;
+        }
+
+        ::placeholder {
+            color: white;
         }
     }
 `;
