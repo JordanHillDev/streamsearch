@@ -1,10 +1,11 @@
-import React, {useEffect, useRef} from "react";
+import React from "react";
 // Config
 import { IMAGE_BASE_URL } from "../config";
 // Hook
 import { useHomeFetch } from "../hooks/useHomeFetch";
 
 // Components
+import Header from "./Header";
 import SearchBar from "./SearchBar";
 import Grid from "./Grid";
 import Thumb from "./Thumb";
@@ -24,18 +25,33 @@ const Home = () => {
 
     const fetchSelection = async (movie) => {
         try {
-            const streamers = await (await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/watch/providers?api_key=4ffa92374b7f648218c020deb99f5905`)).json()
-            setMovieSelection({...movie, streamers})
+            const streamers =
+                movie.media_type === "tv"
+                    ? await (
+                          await fetch(
+                              `https://api.themoviedb.org/3/tv/${movie.id}/watch/providers?api_key=4ffa92374b7f648218c020deb99f5905`
+                          )
+                      ).json()
+                    : await (
+                          await fetch(
+                              `https://api.themoviedb.org/3/movie/${movie.id}/watch/providers?api_key=4ffa92374b7f648218c020deb99f5905`
+                          )
+                      ).json();
+            setMovieSelection({ ...movie, streamers });
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
+    };
 
     if (error) return <div>Something Went Wrong</div>;
 
     return (
         <>
-            <SearchBar setSearchTerm={setSearchTerm} setMovieSelection={setMovieSelection} />
+            <Header />
+            <SearchBar
+                setSearchTerm={setSearchTerm}
+                setMovieSelection={setMovieSelection}
+            />
             {movieSelection ? (
                 <Movie
                     movie={movieSelection}

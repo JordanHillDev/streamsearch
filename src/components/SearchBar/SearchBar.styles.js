@@ -12,21 +12,22 @@ export const Content = styled.div`
     max-width: var(--maxWidth);
     width: 100%;
     height: 55px;
-    background: gray;
+    background: white;
     margin: 0 auto;
     border-radius: 40px;
     color: white;
+    text-align: center;
 
     input {
-        position: absolute;
-        left: 0;
         margin: 8px 0;
-        padding: 0 0 0 60px;
+        padding: 0;
         border: 0;
         width: 95%;
         background: transparent;
         height: 40px;
-        color: white;
+        color: gray;
+        font-size: 1.5rem;
+        text-align: center;
         
 
         :focus {
@@ -34,7 +35,7 @@ export const Content = styled.div`
         }
 
         ::placeholder {
-            color: white;
+            color: gray;
         }
     }
 `;
