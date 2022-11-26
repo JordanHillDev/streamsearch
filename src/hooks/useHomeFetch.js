@@ -15,7 +15,7 @@ export const useHomeFetch = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
-    const [movieSelection, setMovieSelection] = useState(null)
+    const [movieSelection, setMovieSelection] = useState(null);
 
     const fetchMovies = async (page, searchTerm = "") => {
         try {
@@ -51,6 +51,12 @@ export const useHomeFetch = () => {
         setIsLoadingMore(false);
     }, [isLoadingMore, searchTerm, state.page]);
 
+    // Fetch Streaming Services
+    // useEffect(() => {
+    //     fetchStreamers(movieSelection.id)
+    // }, [movieSelection])
+    
+
     return {
         state,
         loading,
@@ -59,6 +65,6 @@ export const useHomeFetch = () => {
         setSearchTerm,
         setIsLoadingMore,
         movieSelection,
-        setMovieSelection
+        setMovieSelection,
     };
 };

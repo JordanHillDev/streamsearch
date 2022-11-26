@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 // Config
 import { IMAGE_BASE_URL } from "../config";
 // Hook
@@ -19,8 +19,17 @@ const Home = () => {
         setSearchTerm,
         // setIsLoadingMore,
         movieSelection,
-        setMovieSelection
+        setMovieSelection,
     } = useHomeFetch();
+
+    const fetchSelection = async (movie) => {
+        try {
+            const streamers = await (await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/watch/providers?api_key=4ffa92374b7f648218c020deb99f5905`)).json()
+            setMovieSelection({...movie, streamers})
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     if (error) return <div>Something Went Wrong</div>;
 
@@ -38,7 +47,7 @@ const Home = () => {
                     {state.results.map((movie) => (
                         <Thumb
                             key={movie.id}
-                            setMovieSelection={setMovieSelection}
+                            setMovieSelection={fetchSelection}
                             image={IMAGE_BASE_URL + movie.poster_path}
                             movie={movie}
                         />
