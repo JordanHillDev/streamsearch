@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
     left: 0;
     right: 0;
     background-color: black;
-    padding: 10px;
+    padding:  20px 10px 10px 10px;
     z-index: 2;
 `;
 

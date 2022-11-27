@@ -37,6 +37,20 @@ export const useHomeFetch = () => {
         setLoading(false);
     };
 
+    const fetchStreamingInfo = async(movie) => {
+        try {
+            setError(false)
+            setLoading(false)
+
+            const streamingServices = await API.fetchStreamingInfo(movie);
+
+            setMovieSelection({...movie, streamingServices})
+        } catch (error) {
+            setError(true)
+        }
+        setLoading(false)
+    }
+
     // Search and Initial
     useEffect(() => {
         setState(initialState);
@@ -47,16 +61,11 @@ export const useHomeFetch = () => {
     useEffect(() => {
         if (!isLoadingMore) return;
 
-        API.fetchMovies(state.page + 1, searchTerm);
+        fetchMovies(state.page + 1, searchTerm);
         setIsLoadingMore(false);
     }, [isLoadingMore, searchTerm, state.page]);
 
-    // Fetch Streaming Services
-    // useEffect(() => {
-    //     fetchStreamers(movieSelection.id)
-    // }, [movieSelection])
-    
-
+  
     return {
         state,
         loading,
@@ -66,5 +75,6 @@ export const useHomeFetch = () => {
         setIsLoadingMore,
         movieSelection,
         setMovieSelection,
+        fetchStreamingInfo
     };
 };

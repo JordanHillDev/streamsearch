@@ -14,34 +14,15 @@ import Movie from "./Movie";
 const Home = () => {
     const {
         state,
-        loading,
+        // loading,
         error,
         searchTerm,
         setSearchTerm,
         setIsLoadingMore,
         movieSelection,
         setMovieSelection,
+        fetchStreamingInfo
     } = useHomeFetch();
-
-    const fetchSelection = async (movie) => {
-        try {
-            const streamers =
-                movie.media_type === "tv"
-                    ? await (
-                          await fetch(
-                              `https://api.themoviedb.org/3/tv/${movie.id}/watch/providers?api_key=4ffa92374b7f648218c020deb99f5905`
-                          )
-                      ).json()
-                    : await (
-                          await fetch(
-                              `https://api.themoviedb.org/3/movie/${movie.id}/watch/providers?api_key=4ffa92374b7f648218c020deb99f5905`
-                          )
-                      ).json();
-            setMovieSelection({ ...movie, streamers });
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     if (error) return <div>Something Went Wrong</div>;
 
@@ -61,16 +42,21 @@ const Home = () => {
                     setMovieSelection={setMovieSelection}
                 />
             ) : (
-                <Grid header={searchTerm ? "Search Result" : "Popular Titles"}>
-                    {state.results.map((movie) => (
-                        <Thumb
-                            key={movie.id}
-                            setMovieSelection={fetchSelection}
-                            image={IMAGE_BASE_URL + movie.poster_path}
-                            movie={movie}
-                        />
-                    ))}
-                </Grid>
+                <>
+                    <Grid
+                        header={searchTerm ? "Search Results" : "Popular Titles"}
+                    >
+                        {state.results.map((movie) => (
+                            <Thumb
+                                key={movie.id}
+                                setMovieSelection={fetchStreamingInfo}
+                                image={IMAGE_BASE_URL + movie.poster_path}
+                                movie={movie}
+                            />
+                        ))}
+                    </Grid>
+                    <button onClick={() => setIsLoadingMore(true)}>Load More</button>
+                </>
             )}
         </>
     );

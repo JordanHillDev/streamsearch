@@ -5,19 +5,18 @@ export const Wrapper = styled.div`
     /* justify-content: center; */
     color: white;
     margin-top: 200px;
-`
+`;
 
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center ;
-    align-items: center ;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 50px;
 
     img {
-        width: 80%;
-        max-width: 1280px;
-        border-radius: 20px ;
+        width: clamp(300px, 50vw, 600px);
+        border-radius: 20px;
     }
 
     h2 {
@@ -36,8 +35,8 @@ export const Content = styled.div`
 
         button {
             font-size: 1.2rem;
-            padding: .5em 1em;
-            color: black
+            padding: 0.5em 1em;
+            color: black;
         }
     }
-`
+`;

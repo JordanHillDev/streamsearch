@@ -6,15 +6,14 @@ import { Wrapper, Content } from "./Movie.styles";
 
 const Movie = ({ movie, image, setMovieSelection }) => {
     let streamers = null;
-    if (Object.keys(movie.streamers.results).length > 0) {
-        streamers = movie.streamers.results.US.flatrate;
+    if (Object.keys(movie.streamingServices.results).length > 0) {
+        streamers = movie.streamingServices.results.US.flatrate;
     }
 
     return (
         <Wrapper>
             <Content>
                 <h1>{movie.title}</h1>
-                <h3>{}</h3>
                 <img src={image} alt="movie poster" />
                 {streamers ? (
                     streamers.map((provider) => (
