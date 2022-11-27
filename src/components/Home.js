@@ -14,11 +14,11 @@ import Movie from "./Movie";
 const Home = () => {
     const {
         state,
-        // loading,
+        loading,
         error,
         searchTerm,
         setSearchTerm,
-        // setIsLoadingMore,
+        setIsLoadingMore,
         movieSelection,
         setMovieSelection,
     } = useHomeFetch();
@@ -47,11 +47,13 @@ const Home = () => {
 
     return (
         <>
-            <Header />
-            <SearchBar
-                setSearchTerm={setSearchTerm}
-                setMovieSelection={setMovieSelection}
-            />
+            <Header>
+                <SearchBar
+                    setSearchTerm={setSearchTerm}
+                    setMovieSelection={setMovieSelection}
+                />
+            </Header>
+
             {movieSelection ? (
                 <Movie
                     movie={movieSelection}

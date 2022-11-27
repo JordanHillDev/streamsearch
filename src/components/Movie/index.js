@@ -6,13 +6,15 @@ import { Wrapper, Content } from "./Movie.styles";
 
 const Movie = ({ movie, image, setMovieSelection }) => {
     let streamers = null;
-    if(Object.keys(movie.streamers.results).length > 0) {streamers = movie.streamers.results.US.flatrate;}
+    if (Object.keys(movie.streamers.results).length > 0) {
+        streamers = movie.streamers.results.US.flatrate;
+    }
 
     return (
         <Wrapper>
             <Content>
-                <button onClick={() => setMovieSelection(null)}>Back</button>
                 <h1>{movie.title}</h1>
+                <h3>{}</h3>
                 <img src={image} alt="movie poster" />
                 {streamers ? (
                     streamers.map((provider) => (
@@ -23,6 +25,11 @@ const Movie = ({ movie, image, setMovieSelection }) => {
                 ) : (
                     <h2>There are no providers</h2>
                 )}
+                <footer>
+                    <button onClick={() => setMovieSelection(null)}>
+                        Back
+                    </button>
+                </footer>
             </Content>
         </Wrapper>
     );

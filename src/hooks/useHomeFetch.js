@@ -47,7 +47,7 @@ export const useHomeFetch = () => {
     useEffect(() => {
         if (!isLoadingMore) return;
 
-        fetch(state.page + 1, searchTerm);
+        API.fetchMovies(state.page + 1, searchTerm);
         setIsLoadingMore(false);
     }, [isLoadingMore, searchTerm, state.page]);
 
