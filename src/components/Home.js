@@ -21,7 +21,7 @@ const Home = () => {
         setIsLoadingMore,
         movieSelection,
         setMovieSelection,
-        fetchStreamingInfo
+        fetchStreamingInfo,
     } = useHomeFetch();
 
     if (error) return <div>Something Went Wrong</div>;

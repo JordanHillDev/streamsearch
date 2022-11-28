@@ -17,6 +17,7 @@ export const useHomeFetch = () => {
     const [isLoadingMore, setIsLoadingMore] = useState(false);
     const [movieSelection, setMovieSelection] = useState(null);
 
+
     const fetchMovies = async (page, searchTerm = "") => {
         try {
             setError(false);
@@ -24,12 +25,15 @@ export const useHomeFetch = () => {
 
             const movies = await API.fetchMovies(searchTerm, page);
 
+            // Filters out results that return People
+            const filteredMedia = movies.results.filter(media => media.media_type !== 'person')
+
             setState((prev) => ({
                 ...movies,
                 results:
                     page > 1
-                        ? [...prev.results, ...movies.results]
-                        : [...movies.results],
+                        ? [...prev.results, ...filteredMedia]
+                        : [...filteredMedia],
             }));
         } catch (error) {
             setError(true);
@@ -75,6 +79,6 @@ export const useHomeFetch = () => {
         setIsLoadingMore,
         movieSelection,
         setMovieSelection,
-        fetchStreamingInfo
+        fetchStreamingInfo,
     };
 };

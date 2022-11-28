@@ -20,6 +20,8 @@ const SearchBar = ({ setSearchTerm, setMovieSelection }) => {
         return () => clearTimeout(timer);
     }, [setSearchTerm, state, setMovieSelection]);
 
+    const handleFocus = (e) => e.target.select()
+
     return (
         <Wrapper>
             <Content>
@@ -27,6 +29,7 @@ const SearchBar = ({ setSearchTerm, setMovieSelection }) => {
                     type="text"
                     placeholder="Search Movie"
                     onChange={(event) => setState(event.currentTarget.value)}
+                    onFocus={handleFocus}
                     value={state}
                 />
             </Content>

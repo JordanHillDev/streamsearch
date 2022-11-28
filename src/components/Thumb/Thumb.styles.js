@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+`;
+
+export const Content = styled.div`
+    text-align: center;
+    color: white;
+`;
+
 export const Image = styled.img`
     width: 100%;
     max-width: 720px;
@@ -7,6 +19,6 @@ export const Image = styled.img`
     border-radius: 20px;
 
     :hover {
-        opacity: 0.8 ;
+        opacity: 0.8;
     }
-`
+`;
