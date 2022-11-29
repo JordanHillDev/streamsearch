@@ -1,26 +1,16 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    /* display: flex; */
-    /* justify-content: center; */
     color: white;
     margin-top: 200px;
-`;
-
-export const Content = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
+    position: relative;
 
-    img {
-        width: clamp(300px, 50vw, 600px);
-        border-radius: 20px;
-    }
-
-    h2 {
-        color: white;
+    h1,
+    h3 {
+        margin: 5px;
     }
 
     footer {
@@ -32,11 +22,26 @@ export const Content = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-
-        button {
-            font-size: 1.2rem;
-            padding: 0.5em 1em;
-            color: black;
-        }
     }
+`;
+
+export const Content = styled.div`
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 50px 0;
+    gap: 40px;
+
+    img {
+        width: clamp(300px, 30vw, 600px);
+        border-radius: 20px;
+    }
+
+    h2 {
+        color: white;
+    }
+
+    
 `;

@@ -10,6 +10,7 @@ import SearchBar from "./SearchBar";
 import Grid from "./Grid";
 import Thumb from "./Thumb";
 import Movie from "./Movie";
+import Button from "./Button";
 
 const Home = () => {
     const {
@@ -55,7 +56,7 @@ const Home = () => {
                             />
                         ))}
                     </Grid>
-                    <button onClick={() => setIsLoadingMore(true)}>Load More</button>
+                    <Button text={'Load More'} callback={() => setIsLoadingMore(true)} />
                 </>
             )}
         </>

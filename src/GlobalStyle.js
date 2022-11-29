@@ -10,9 +10,10 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        margin: 0;
+        margin: 0 0 20px 0;
         padding: 0;
         background: black;
         font-family: 'Roboto', sans-serif;
+        text-align: center;
     }
 `
