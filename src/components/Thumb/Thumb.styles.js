@@ -18,6 +18,9 @@ export const Content = styled.div`
         margin: 0;
     }
 
+    span {
+        color: var(--font-color-bright)
+    }
 `;
 
 export const Image = styled.img`
@@ -30,3 +33,25 @@ export const Image = styled.img`
         opacity: 0.8;
     }
 `;
+
+export const NoImage = styled.div`
+    width: 100%;
+    height: 100%;
+    max-width: 720px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 0.2rem;
+
+    h2 {
+        text-align: center;
+        font-size: 2rem;
+        color: var(--background-color)
+    }
+
+    :hover {
+        opacity: 0.8;
+    }
+`

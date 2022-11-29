@@ -7,13 +7,14 @@ export const Wrapper = styled.div`
     text-align: left;
 
     h1 {
-        color: gray;
+        color: white;
+        margin-bottom: 4rem;
     }
 `;
 
 export const Content = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     grid-gap: 2rem;
 
     @media screen and (min-width: 640px) {

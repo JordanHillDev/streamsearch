@@ -45,18 +45,29 @@ const Home = () => {
             ) : (
                 <>
                     <Grid
-                        header={searchTerm ? "Search Results" : "Popular Titles"}
+                        header={
+                            searchTerm ? "Search Results" : "Popular Titles"
+                        }
                     >
                         {state.results.map((movie) => (
                             <Thumb
                                 key={movie.id}
                                 setMovieSelection={fetchStreamingInfo}
-                                image={IMAGE_BASE_URL + movie.poster_path}
+                                image={
+                                    movie.poster_path
+                                        ? IMAGE_BASE_URL + movie.poster_path
+                                        : null
+                                }
                                 movie={movie}
                             />
                         ))}
                     </Grid>
-                    <Button text={'Load More'} callback={() => setIsLoadingMore(true)} />
+                    {state.page < state.total_pages && (
+                        <Button
+                            text={"Load More"}
+                            callback={() => setIsLoadingMore(true)}
+                        />
+                    )}
                 </>
             )}
         </>

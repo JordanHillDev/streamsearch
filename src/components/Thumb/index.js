@@ -1,7 +1,7 @@
 import React from "react";
 
 // Styles
-import { Wrapper, Content, Image } from "./Thumb.styles";
+import { Wrapper, Content, Image, NoImage } from "./Thumb.styles";
 
 const Thumb = ({ image, setMovieSelection, movie }) => {
     const releaseDate = movie.first_air_date || movie.release_date || null;
@@ -13,13 +13,13 @@ const Thumb = ({ image, setMovieSelection, movie }) => {
         <Wrapper>
             <Content>
                 <h2>{title}</h2>
-                <span>{`(${releaseDate && releaseDate.split("-")[0]})`}</span>
+                {releaseDate ? <span>{`(${releaseDate.split("-")[0]})`}</span> : null}
             </Content>
-            <Image
+            {image ? <Image
                 onClick={() => setMovieSelection(movie)}
                 src={image}
                 alt="movie-thumb"
-            />
+            /> : <NoImage><h2>No Image Available</h2></NoImage>}
         </Wrapper>
     );
 };

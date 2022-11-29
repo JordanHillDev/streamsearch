@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    background-color: black;
+    background-color: var(--background-color);
     padding:  20px 10px 10px 10px;
     z-index: 2;
 `;
@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
     h1 {
         font-size: clamp(1.8rem, 4vw, 4rem);
-        color: white;
+        color: var(--font-color-bright);
         margin: 0;
         text-align: center;
     }

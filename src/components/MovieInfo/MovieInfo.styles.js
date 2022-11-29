@@ -7,7 +7,12 @@ export const Wrapper = styled.div`
     p {
         line-height: 1.5;
     }
+    
     h2 {
         text-decoration: underline;
+    }
+    
+    li {
+        color: var(--font-color-bright);
     }
 `;

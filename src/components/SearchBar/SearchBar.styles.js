@@ -22,16 +22,21 @@ export const Content = styled.div`
         margin: 0;
         padding: 0;
         border: 0;
-        width: 95%;
+        width: 100%;
+        border-radius: 40px;
         background: transparent;
         height: 40px;
-        color: gray;
+        color: var(--background-color);
         font-size: 1.5rem;
         text-align: center;
-        
 
         :focus {
             outline: none;
+            border: 3px solid var(--font-color-bright);
+        }
+
+        ::selection {
+            background: gray;
         }
 
         ::placeholder {
