@@ -4,7 +4,10 @@ export const GlobalStyle = createGlobalStyle`
     :root {
         --maxWidth: 1280px;
         --background-color: hsl(0, 2%, 12%);
+        --background--color-transparent: hsla(0, 2%, 12%, 0.7);
         --font-color-bright: hsl(47, 100%, 47%);
+
+
     }
 
     * {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // Config
 import { IMAGE_BASE_URL } from "../config";
 // Hook
@@ -26,6 +26,8 @@ const Home = () => {
         fetchStreamingInfo,
     } = useHomeFetch();
 
+    const [pagePosition, setPagePosition] = useState(0);
+
     if (error) return <div>Something Went Wrong</div>;
 
     return (
@@ -46,7 +48,6 @@ const Home = () => {
                         image={IMAGE_BASE_URL + movieSelection.poster_path}
                         setMovieSelection={setMovieSelection}
                     />
-                    
                 </>
             ) : (
                 <>
@@ -54,6 +55,7 @@ const Home = () => {
                         header={
                             searchTerm ? "Search Results" : "Popular Titles"
                         }
+                        pagePosition={pagePosition}
                     >
                         {state.results.map((movie) => (
                             <Thumb
@@ -65,6 +67,7 @@ const Home = () => {
                                         : null
                                 }
                                 movie={movie}
+                                setPagePosition={setPagePosition}
                             />
                         ))}
                     </Grid>

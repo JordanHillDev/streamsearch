@@ -14,11 +14,6 @@ const SearchBar = ({ setSearchTerm, setMovieSelection }) => {
         return () => clearTimeout(timer);
     }, [setSearchTerm, state, setMovieSelection]);
 
-    const handleFocus = (e) => {
-        e.target.placeholder = "";
-        e.target.select();
-    };
-
     const handleChange = (e) => {
         if (e.target.value === "") e.target.placeholder = "Search Titles";
         setState(e.currentTarget.value);
@@ -31,7 +26,6 @@ const SearchBar = ({ setSearchTerm, setMovieSelection }) => {
                     type="text"
                     placeholder="Search Titles"
                     onChange={(e) => handleChange(e)}
-                    onFocus={handleFocus}
                     value={state}
                 />
             </Content>

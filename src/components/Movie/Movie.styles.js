@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     color: white;
-    /* margin-top: 200px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,16 +18,18 @@ export const Wrapper = styled.div`
     }
 
     footer {
-        background-color: var(--background-color);
+        background-color: var(--background--color-transparent);
         width: 100%;
-        height: 50px;
+        /* height: 50px; */
         position: fixed;
         bottom: 0;
-        padding-bottom: 2rem;
+        padding: .5rem;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
+    
 `;
 
 export const Content = styled.div`
