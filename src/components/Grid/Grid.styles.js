@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     max-width: var(--maxWidth);
-    margin: 200px auto 80px auto;
+    margin: 0 auto 80px auto;
     padding: 0 20px;
     text-align: left;
 

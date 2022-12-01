@@ -7,6 +7,7 @@ const Thumb = ({ image, setMovieSelection, movie }) => {
     const releaseDate = movie.first_air_date || movie.release_date || null;
     let title = movie.name || movie.title || null;
 
+    // Cuts off long movie titles with "...""
     if (title.length > 20) title = title.slice(0, 20) + "...";
 
     return (

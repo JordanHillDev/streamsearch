@@ -1,34 +1,36 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Wrapper, Content } from "./SearchBar.styles";
 
 const SearchBar = ({ setSearchTerm, setMovieSelection }) => {
     const [state, setState] = useState("");
-    const initial = useRef(true);
 
     useEffect(() => {
-        if (initial.current) {
-            initial.current = false;
-            return;
-        }
-
         const timer = setTimeout(() => {
             setSearchTerm(state);
-            setMovieSelection(null)
+            setMovieSelection(null);
         }, 500);
 
         return () => clearTimeout(timer);
     }, [setSearchTerm, state, setMovieSelection]);
 
-    const handleFocus = (e) => e.target.select()
+    const handleFocus = (e) => {
+        e.target.placeholder = "";
+        e.target.select();
+    };
+
+    const handleChange = (e) => {
+        if (e.target.value === "") e.target.placeholder = "Search Titles";
+        setState(e.currentTarget.value);
+    };
 
     return (
         <Wrapper>
             <Content>
                 <input
                     type="text"
-                    placeholder="Search Movie"
-                    onChange={(event) => setState(event.currentTarget.value)}
+                    placeholder="Search Titles"
+                    onChange={(e) => handleChange(e)}
                     onFocus={handleFocus}
                     value={state}
                 />

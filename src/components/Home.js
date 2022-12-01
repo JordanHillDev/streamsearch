@@ -11,11 +11,12 @@ import Grid from "./Grid";
 import Thumb from "./Thumb";
 import Movie from "./Movie";
 import Button from "./Button";
+import Spinner from "./Spinner";
 
 const Home = () => {
     const {
         state,
-        // loading,
+        loading,
         error,
         searchTerm,
         setSearchTerm,
@@ -37,11 +38,16 @@ const Home = () => {
             </Header>
 
             {movieSelection ? (
-                <Movie
-                    movie={movieSelection}
-                    image={IMAGE_BASE_URL + movieSelection.poster_path}
-                    setMovieSelection={setMovieSelection}
-                />
+                <>
+                    {loading && <Spinner />}
+
+                    <Movie
+                        movie={movieSelection}
+                        image={IMAGE_BASE_URL + movieSelection.poster_path}
+                        setMovieSelection={setMovieSelection}
+                    />
+                    
+                </>
             ) : (
                 <>
                     <Grid
@@ -62,6 +68,7 @@ const Home = () => {
                             />
                         ))}
                     </Grid>
+                    {loading && <Spinner />}
                     {state.page < state.total_pages && (
                         <Button
                             text={"Load More"}

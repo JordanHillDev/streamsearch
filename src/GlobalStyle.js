@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         margin: 0 0 20px 0;
-        padding: 0;
+        padding: 200px 0 0 0;
         background: var(--background-color);
         font-family: 'Roboto', sans-serif;
         text-align: center;

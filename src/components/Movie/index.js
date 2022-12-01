@@ -7,7 +7,7 @@ import { Wrapper, Content } from "./Movie.styles";
 
 const Movie = ({ movie, image, setMovieSelection }) => {
     useEffect(() => {
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+        window.scrollTo({top: 0, left: 0, behavior: 'auto'})
     }, [])
 
     const title = movie.name || movie.title || null;

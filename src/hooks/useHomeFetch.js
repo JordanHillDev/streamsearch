@@ -44,7 +44,7 @@ export const useHomeFetch = () => {
     const fetchStreamingInfo = async(movie) => {
         try {
             setError(false)
-            setLoading(false)
+            setLoading(true)
 
             const streamingServices = await API.fetchStreamingInfo(movie);
 
