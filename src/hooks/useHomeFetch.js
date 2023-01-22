@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 // API
 import API from "../API";
 
+
 const initialState = {
     page: 0,
     results: [],
@@ -15,7 +16,7 @@ export const useHomeFetch = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
-    const [movieSelection, setMovieSelection] = useState(null);
+    const [movieSelection, setMovieSelection] = useState(undefined);
 
 
     const fetchMovies = async (page, searchTerm = "") => {
@@ -45,10 +46,8 @@ export const useHomeFetch = () => {
         try {
             setError(false)
             setLoading(true)
-
             const streamingServices = await API.fetchStreamingInfo(movie);
-
-            setMovieSelection({...movie, streamingServices})
+            setMovieSelection({...movie, streamingServices })
         } catch (error) {
             setError(true)
         }

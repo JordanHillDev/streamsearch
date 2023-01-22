@@ -1,8 +1,17 @@
 import React from "react";
 // Styles
 import { Wrapper } from "./MovieInfo.styles";
+// Types
+type Props = {
+    movie: {
+        overview: string
+    }
+    streamingServices: [{
+        provider_name: string
+    }]
+}
 
-const MovieInfo = ({ movie, streamingServices }) => (
+const MovieInfo: React.FC<Props> = ({ movie, streamingServices }) => (
     <Wrapper>
         <h2>Synopsis</h2>
         <p>{movie.overview}</p>

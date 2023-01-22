@@ -5,6 +5,7 @@ import MovieInfo from "../MovieInfo";
 // Styles
 import { Wrapper, Content } from "./Movie.styles";
 
+
 const Movie = ({ movie, image, setMovieSelection }) => {
     useEffect(() => {
         window.scrollTo({top: 0, left: 0, behavior: 'auto'})
