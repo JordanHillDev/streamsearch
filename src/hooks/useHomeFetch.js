@@ -16,7 +16,7 @@ export const useHomeFetch = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
-    const [movieSelection, setMovieSelection] = useState(undefined);
+    const [movieSelection, setMovieSelection] = useState(null);
 
 
     const fetchMovies = async (page, searchTerm = "") => {
@@ -46,8 +46,8 @@ export const useHomeFetch = () => {
         try {
             setError(false)
             setLoading(true)
-            const streamingServices = await API.fetchStreamingInfo(movie);
-            setMovieSelection({...movie, streamingServices })
+            const streamingServices = (await API.fetchStreamingInfo(movie)).results['US']?.flatrate?.map(obj => obj.provider_name);
+             setMovieSelection({...movie, streamingServices })
         } catch (error) {
             setError(true)
         }
