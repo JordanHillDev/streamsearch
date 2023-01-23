@@ -4,9 +4,15 @@ import Button from "../Button";
 import MovieInfo from "../MovieInfo";
 // Styles
 import { Wrapper, Content } from "./Movie.styles";
+import {Movie as MovieTypes} from '../../API'
+type Props = {
+    movie: MovieTypes;
+    image: string;
+    setMovieSelection: any;
+}
 
 
-const Movie = ({ movie, image, setMovieSelection }) => {
+const Movie: React.FC<Props> = ({ movie, image, setMovieSelection }) => {
     useEffect(() => {
         window.scrollTo({top: 0, left: 0, behavior: 'auto'})
     }, [])
@@ -20,7 +26,7 @@ const Movie = ({ movie, image, setMovieSelection }) => {
             <h3>{`(${releaseDate?.split('-')[0]})`}</h3>
             <Content>
                 <img src={image} alt="movie poster" />
-                <MovieInfo movie={movie} streamingServices={movie.streamingServices} />
+                <MovieInfo movie={movie} />
             </Content>
             <footer>
                 <Button

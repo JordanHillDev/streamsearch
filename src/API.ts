@@ -18,7 +18,7 @@ export type Movie = {
     first_air_date: string;
     release_date: string;
     name? : string | undefined;
-    US: []
+    streamingServices: []
 }
 
 export type Movies = {
@@ -29,10 +29,11 @@ export type Movies = {
 };
 
 export type StreamingServices = {
-    id: number;
-    results: {}
-    US: []
+    [key: string]: any
 }
+
+// { [key: string]: any[] } = {}
+
 
 
 const apiSettings = {
@@ -42,7 +43,7 @@ const apiSettings = {
             : `${POPULAR_URL}&page=${page}`;
         return await (await fetch(endpoint)).json();
     },
-    fetchStreamingInfo: async (movie: Movie): Promise<[] | undefined> => {
+    fetchStreamingInfo: async (movie: Movie): Promise<StreamingServices> => {
         const url: string =
             movie.media_type === "tv"
                 ? `${STREAMING_TV_URL}${movie.id}${STREAMING_URL_END}`

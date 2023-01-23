@@ -1,12 +1,19 @@
 import React from "react";
 // Styles
 import { Wrapper, Content, Image, NoImage } from "./Thumb.styles";
+// Types
+import { Movie } from "../../API"
+type Props = {
+    image: string | null;
+    setMovieSelection: any
+    movie: Movie;
+    setPagePosition: React.Dispatch<React.SetStateAction<number>>
+}
 
 
 
 
-
-const Thumb = ({ image, setMovieSelection, movie, setPagePosition }) => {
+const Thumb: React.FC<Props> = ({ image, setMovieSelection, movie, setPagePosition }) => {
     const releaseDate = movie.first_air_date || movie.release_date || null;
     let title = movie.name || movie.title || null;
 

@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 // API
-import API from "../API";
-
+import API, { Movie } from "../API";
 
 const initialState = {
     page: 0,
-    results: [],
+    results: [] as Movie[],
     total_pages: 0,
     total_results: 0,
 };
@@ -16,10 +15,9 @@ export const useHomeFetch = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
-    const [movieSelection, setMovieSelection] = useState(null);
+    const [movieSelection, setMovieSelection] = useState<Movie | null>(null);
 
-
-    const fetchMovies = async (page, searchTerm = "") => {
+    const fetchMovies = async (page: number, searchTerm = "") => {
         try {
             setError(false);
             setLoading(true);
@@ -27,7 +25,9 @@ export const useHomeFetch = () => {
             const movies = await API.fetchMovies(searchTerm, page);
 
             // Filters out results that return People
-            const filteredMedia = movies.results.filter(media => media.media_type !== 'person')
+            const filteredMedia = movies.results.filter(
+                (media) => media.media_type !== "person"
+            );
 
             setState((prev) => ({
                 ...movies,
@@ -42,17 +42,21 @@ export const useHomeFetch = () => {
         setLoading(false);
     };
 
-    const fetchStreamingInfo = async(movie) => {
+    const fetchStreamingInfo = async (movie: Movie) => {
         try {
-            setError(false)
-            setLoading(true)
-            const streamingServices = (await API.fetchStreamingInfo(movie)).results['US']?.flatrate?.map(obj => obj.provider_name);
-             setMovieSelection({...movie, streamingServices })
+            setError(false);
+            setLoading(true);
+            const streamingServices = (
+                await API.fetchStreamingInfo(movie)
+            )?.results["US"]?.flatrate?.map(
+                (obj: { provider_name: string }) => obj.provider_name
+            );
+            setMovieSelection({ ...movie, streamingServices });
         } catch (error) {
-            setError(true)
+            setError(true);
         }
-        setLoading(false)
-    }
+        setLoading(false);
+    };
 
     // Search and Initial
     useEffect(() => {
@@ -68,7 +72,6 @@ export const useHomeFetch = () => {
         setIsLoadingMore(false);
     }, [isLoadingMore, searchTerm, state.page]);
 
-  
     return {
         state,
         loading,

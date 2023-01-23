@@ -11,10 +11,8 @@ import Thumb from "./Thumb";
 import Movie from "./Movie";
 import Button from "./Button";
 import Spinner from "./Spinner";
-// Types
 
-
-const Home = () => {
+const Home: React.FC = () => {
     const {
         state,
         loading,
