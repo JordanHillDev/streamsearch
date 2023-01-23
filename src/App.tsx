@@ -4,13 +4,12 @@ import Home from "./components/Home";
 // Styles
 import { GlobalStyle } from "./GlobalStyle";
 
-const App = () => {
-    return (
+const App: React.FC = () => {
+return (
         <>
             <Home />
             <GlobalStyle />
         </>
     );
-};
-
+}
 export default App;

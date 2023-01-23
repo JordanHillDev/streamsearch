@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { IMAGE_BASE_URL } from "../config";
 // Hook
 import { useHomeFetch } from "../hooks/useHomeFetch";
-
 // Components
 import Header from "./Header";
 import SearchBar from "./SearchBar";
@@ -13,7 +12,7 @@ import Movie from "./Movie";
 import Button from "./Button";
 import Spinner from "./Spinner";
 
-const Home = () => {
+const Home: React.FC = () => {
     const {
         state,
         loading,
@@ -61,11 +60,7 @@ const Home = () => {
                             <Thumb
                                 key={movie.id}
                                 setMovieSelection={fetchStreamingInfo}
-                                image={
-                                    movie.poster_path
-                                        ? IMAGE_BASE_URL + movie.poster_path
-                                        : null
-                                }
+                                image={ movie.poster_path ? IMAGE_BASE_URL + movie.poster_path : null }
                                 movie={movie}
                                 setPagePosition={setPagePosition}
                             />

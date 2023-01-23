@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
-
+// Styles
 import { Wrapper, Content } from "./SearchBar.styles";
+// Types
+type Props = {
+    setSearchTerm: React.Dispatch<React.SetStateAction<string>>
+    setMovieSelection: any;
+}
 
-const SearchBar = ({ setSearchTerm, setMovieSelection }) => {
+
+const SearchBar: React.FC<Props> = ({ setSearchTerm, setMovieSelection }) => {
     const [state, setState] = useState("");
 
     useEffect(() => {
@@ -14,7 +20,7 @@ const SearchBar = ({ setSearchTerm, setMovieSelection }) => {
         return () => clearTimeout(timer);
     }, [setSearchTerm, state, setMovieSelection]);
 
-    const handleChange = (e) => {
+    const handleChange = (e:React.ChangeEvent<HTMLInputElement>): void => {
         if (e.target.value === "") e.target.placeholder = "Search Titles";
         setState(e.currentTarget.value);
     };
