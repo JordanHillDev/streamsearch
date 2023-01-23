@@ -12,7 +12,7 @@ A SPA to find movies or shows and list the subscription services they are curren
 
 
 ## Tech Stack
-
+- Typescript
 - React
 - Styled Components
 
