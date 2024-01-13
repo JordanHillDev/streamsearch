@@ -10,6 +10,8 @@ type Props = {
 };
 
 const MovieInfo: React.FC<Props> = ({ movie }) => {
+    
+    
     return (
         <Wrapper>
             <h2>Synopsis</h2>
@@ -18,7 +20,7 @@ const MovieInfo: React.FC<Props> = ({ movie }) => {
             {movie.streamingServices && (
                 <ul>
                     {movie.streamingServices?.map((prov) => (
-                        <li key={prov}>{prov}</li>
+                        prov && <li key={prov}>{prov}</li>
                     ))}
                 </ul>
             )}
